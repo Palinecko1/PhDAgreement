@@ -17,6 +17,8 @@
 \usepackage{cite}
 \usepackage{wasysym}
 \usepackage{adjustbox}
+
+\usepackage{rotating}
 %
 %\usepackage[backend=bibtex]{biblatex}
 %\addbibresource{Averaging.bib}
@@ -108,23 +110,25 @@
 
 \chapter{Introduction}
 
-In past decade large penetration of power electronics into everyday life can be observed. This vast penetration lead to shift in characteristic of power distribution system from inductive and resistive towards capacitive and non-linear\cite{Boroyevich2007}. As a consequence of this vast adaptation of the power electronics, it has reached a point in its development when it is considered as a mature engineering and research field\cite{Technology2015}. As a result of this development power electronic is pushing forward new applications. A good example is reincarnation of the AC vs. DC debate\cite{IEEE2016}. 
+In past decade large penetration of power electronics into everyday life can be observed. This vast penetration lead to shift in characteristic of power distribution system from inductive and resistive towards capacitive and non-linear\cite{Boroyevich2007}. As a consequence of this vast implementation of the power electronic converters,  the field has reached a point in its development when it is marked as a mature engineering and research field\cite{Technology2015}. Resulting from this development power electronic is pushing forward new applications. A good example is reincarnation of the AC vs. DC debate\cite{IEEE2016}. 
 
 %
-It seems that in peoples consciousness the DC has lost a battle more than a century ago and passed out of all knowledge. However, the truth seems to be on the contrary, the DC has survived and dominated over AC in very specific applications such as telecommunication. From telecommunication it made its way into consumer electronics, and from consumer electronics to Microgrid research and application.  
+It seems that in common consciousness the DC has lost a battle more than a century ago and passed out of all knowledge. However, the truth seems to be on the contrary, the DC has survived and dominated over AC in very specific applications such as telecommunication. From telecommunication it made its way into consumer electronics, and from consumer electronics to Microgrid research and application.  
 
 %
-With higher penetration of renewable energy sources new challenges arise for the power distribution systems. The power systems for electricity distribution were designed to for a situation with strictly defined power flow, and centralized power production. The renewable energy sources are diffuse in nature, which makes them distributed over large geographical areas. Furthermore, the renewable energy sources are also intermittent, meaning that the energy is dispersed over time periods. It has been discussed that high penetration of distributed energy sources can lead to overloading of the system. Therefore, in order to utilize more of the renewable energy sources the power distribution system needs an upgrade to become more flexible in its topology to allow for multi-directional flow of power both in space and time. 
+With increasing penetration of renewable energy sources new challenges arise for the power distribution systems. The power systems distribution were designed for a situation with strictly defined power flow, and centralized power production. The renewable energy sources are diffuse in nature, which makes them distributed over large geographical areas. Furthermore, the renewable energy sources are also intermittent, meaning that the energy is dispersed over time periods. It has been discussed that high penetration of distributed energy sources can lead to overloading of the system. Therefore, in order to utilize more of the renewable energy sources the power distribution system needs an upgrade to become more flexible in its topology to allow for multi-directional flow of power both in space and time. %% The negative prices of electricity are a sign of badly designed system and market, and not a sign of more sustainable society.
 
-Furthermore, there is a strong trend in the world towards higher urbanization. This leads to concentration of large amounts of people in space restricted areas. Whereas, this has clear implications for social sciences, there are also implications for power distribution system. The concentration of humans in a small area leads to large concentration of energy utilization. This conditions higher power carrying capabilities of the system. High power carrying capability with high availability in AC system means serious oversizing of the network. This is in direct contradiction with  society interest, more efficient and sustainable energy usage.
+Secondly, there is a strong trend in the world towards higher urbanization. This leads to concentration of large amounts of people in space restricted areas. Whereas, this has clear implications for social sciences, there are also implications for power distribution system. The concentration of humans in a small area leads to large concentration of energy utilization. This conditions higher power carrying capabilities of the system. High power carrying capability with high availability in AC system means serious oversizing of the network. This is in direct contradiction with  society interest, more efficient and sustainable energy usage. 
 
-Therefore, the vision is to introduce a low voltage distribution network based on DC. The envisioned distribution network should not suffer from the same shortcomings as the AC based distribution. And with the newly developed DC distribution network it should be easier to incorporate all different aspects of smart grids. Furthermore, developing a complex solution for a distribution in developed world can have impact on the electrification of rural areas in the developing world. Simplified and less general solutions can be adapted in order to provide electricity for countries where population has lower buying strength.
+Society is asking for more efficient utilization of energies,  and part of the answer might be to introduce a low voltage distribution network based on DC. The envisioned distribution network should not suffer from the same shortcomings as the AC based distribution. And with the newly developed DC distribution network it should be easier to incorporate all different aspects of smart grids. 
+
+Furthermore, developing a complex solution for a distribution in developed world can have impact on the electrification of rural areas in the developing world. Simplified and less general solutions can be adapted in order to provide electricity for countries where population has lower buying strength.
 
 \section{Power Electronics in Low Voltage DC Distribution}
 
-The power electronics is often regarded as an enabling technology of low voltage power distribution. However, this might be slightly misleading. Because it leads to considering the low voltage DC distribution as an application pull for research. When on the contrary it seems that power electronic matured and is creating a new application. Thus pushing a new application and that is low voltage DC distribution. 
+The power electronics is often regarded as an enabling technology in many applications. However, if the technology is termed as enabling, the application is usually regarded as a pulling force of the research. However, in case of low voltage DC distribution it seems that power electronic matured and is pushing a new application. Thus it may seem that there are both pulling and pushing forces in the research of power electronics in low voltage DC distribution.
 
-Even though the power electronic seems to stand behind creation of this field, there seems to be some pulling force for improvement of the current state-of-the-art power converters. The origin of this pull force can be identified in the main trends driving introduction of more power electronic devices in the distribution grid eg. renewable resources, urbanization, better energy utilization etc. These trends projects themselves as requirements for highly flexible power distribution system with multiple applications for power converters. In order to accommodate the prospective changes over considerable time span the solution needs to be not just flexible but also scalable and standardized. These transferable features of the future distribution system provide a sufficient pull for research in power electronic field.
+Even though the power electronic seems to stand behind creation of this field, there seems to be strong pulling force for improvement of the current state-of-the-art power converters. The origin of this pull force can be identified in the main trends driving introduction of more power electronic devices in the distribution grid eg. renewable resources, urbanization, better energy utilization etc. These trends projects themselves as requirements for highly flexible power distribution system with multiple applications for power converters. In order to accommodate the prospective changes over considerable time span the solution needs to be not just flexible but also scalable and standardized. These transferable features of the future distribution system provide a sufficient pull for research in power electronic field.
 
 When examining envisioned low voltage DC distribution network in particular, we can categorize the power converters into categories according to their application:
 \begin{itemize}
@@ -135,23 +139,26 @@ When examining envisioned low voltage DC distribution network in particular, we 
 \end{itemize}
 
 For this project the "distribution" converter is of interest. Behind the unspecific name is a DC-DC converter which can be deployed at different parts of the network and in general should have at least these functions:
- \begin{itemize}
- 	\item DC voltage stepping
- 	\item DC power or DC voltage regulation
- 	\item DC fault isolation
- 	\item Interfacing different DC technologies like  single bus with bipolar DC systems
- \end{itemize}
+\begin{itemize}
+	\item Enables DC voltage stepping
+	\item DC power and/or DC voltage regulation
+	\item Dynamics decoupling of interfaced systems (eg. connection between bipolar and single-bus architectures)
+	\item Bidirectional DC fault isolation
+\end{itemize}
 
 The description of the future  low voltage DC distribution network and the role of the power electronics in it, can be transformed into following converter requirements:
 
- \begin{itemize}
- 	\item High efficiency at partial load (very high overall efficiency)
- 	\item Long useful life
- 	\item N+1 redundancy
- 	\item Easy maintenance
- 	\item Minimal Cost
- 	\item Environment friendly 
- \end{itemize}
+\begin{itemize}
+	\item Bidirectional power flow
+	\item Smart metering and communication functions \cite{Liserre2016}
+	\item High partial load efficiency and small stand-by losses
+	\item Long Useful life
+	\item N+1 redundancy
+	\item Easy maintenance 
+	\item Minimal Costs for life time usage (? how to put nicely that it is not just about capital investment but also about maintenance costs ?)
+	\item Environment Friendly (Life-cycle analysis as a measure?\footnote{Such as: \href{https://www.pre-sustainability.com/electric-vehicles-are-best-for-green-mobility-myth-or-not}{www.pre-sustainability.com/coming-soon-sustainability-mythbusters}})
+\end{itemize}
+
 
 
 
@@ -171,27 +178,44 @@ In the above text a new approach towards power distribution was briefly describe
 	\item low voltage DC distribution is a plausible solution for the problems arising with increased integration of renewable energy sources
 	\item low voltage DC distribution is used as a system of choice for very specific problems, which implies that the converters should be versatile in functionality and power level in order to create price competitive solution
 	\item modular architecture and production of power converters can provide necessary framework for the successful adaptation of the low voltage DC  distribution
-	\item modularity as a concept was rampantly adopted by the researchers in power electronics, however not by industry (?)
+	\item modularity as a term describing cascaded structures of converters is widely used in available literature, however there seems to be space for extra gains beyond the cascaded electrical structure
 \end{itemize}
 
 \chapter{Aim and Research Objectives}
 
-\textbf{Aim:} Develop modular DC-DC converter for low voltage DC distribution network.
+\section{Aim} Develop a concept modular DC-DC converter for low voltage DC distribution network.
  
  \vspace{10mm}
 
-\textbf{Research Objectives}
+\section{Research Questions}
 
 \begin{enumerate}
-	\item Analyse present definition and concepts of modularity used in power electronic design and manufacturing. The concepts of modularity are to be analysed and categorized. Furthermore, the concepts of modularity are to be enriched by modularity in manufacturing. Creating a basis for truly modular converter beyond the cascaded converter. 
-	\item Introduce new definition of modularity for power converters such that both design and manufacturing process will be covered. The concept of modularity must take into account the specifics of the power electronic field, and thus should be general enough to cover the space of power electronics in all three dimensions:
-	\subitem Power 
-	\subitem Functions
-	\subitem Application
-	\item The concept of modularity is then to be applied on the three cornerstones of DC-DC converter design - thermal management, high power density, efficiency. And also on the three cornerstones of converter manufacturing - spatial design, electromagnetic design, thermal design. Connecting the two process in one which accentuates the benefits of modular approach.
-	\item Based on the concept of modularity develop an approach for product planning, which will dramatically reduce time to market. 
+	\item How the state-of-the-art modular converters can be classified ? And how can modularity of the converters be defined such that will respect the specifics of power electronics and the supply chain in the low voltage distribution market ? 
+	\subitem Based on the definition and classification of modular converters, what are the challenges on the component level for the application of low voltage DC distribution ?
+	\item Can the modularity be quantified, such that this measure of modularity can help to decide where modular approach is beneficial and where is a breaking point where more integral product is more beneficial ?
+	\item How can a design process be developed, such that a family of DC-DC network converters can be easily designed and manufactured while respecting the requirements of the market and the supply chain of the producer ? 
+	\item What is the $\text{CO}_2$ footprint of the proposed family of DC-DC network converters and how it can be optimized by utilization of more environment friendly materials and manufacturing processes ? 
 \end{enumerate}
 
+
+\section{Research Objectives}
+
+\begin{enumerate}
+	\item Analyse present concepts of modular converters used in power electronic converter design and manufacturing. The concepts of modularity are to be analysed and categorized. Based on the analysis a classification of the modular converters is to be established. The classification will be used to create a definition of modular converter for low voltage DC distribution. This definition will encompass both design and manufacturing process. % Furthermore, the concepts of modularity are to be enriched by modularity in manufacturing. Creating a basis for truly modular converter beyond the cascaded converter. 
+	\item  Based on the definition of modularity a design process which exploits the benefits of modularity is to be developed. This design process takes into account both specifics of the market(electric power distribution for secondary customers) and supply chain of the power electronic converter manufacturers and power electronic enabled solutions providers. 
+	
+	The design process should allow for design of concept family of modular DC-DC converters, such that they are easy to optimize for cost while maintaining wide variety of products and ability for fast product change.
+	\item Environmentally friendly materials and manufacturing processes are preferred. Based on the life-cycle analysis the conceptual family of the converters will be evaluated in terms of $\text{CO}_2$ footprint. This step represents a direct effort towards decarbonizing the industry. 
+\end{enumerate}
+
+\section{Expected Contributions}
+
+\begin{enumerate}
+	\item Classification of modular converters and definition of modularity for converters in low voltage power distribution.
+	\item Identification of challenges and limits of power electronic converters in low voltage power distribution.
+	\item Measure of modularity as a design tool.
+	\item Life-cycle analysis of the modular DC-DC converters, identifying the weakest points of the converters manufacturing process and materials used in terms of $\text{CO}_2$
+\end{enumerate}
 \newpage
 \section{Assumptions and Constraints}
 
@@ -217,37 +241,11 @@ Constraints:
 
 \chapter{Strategy and planning}
 
-\section{4 years planning}
-
-\textbf{Best case scenario}
 
 
-\textbf{Acceptable scenario}
-
-\section{6 months}
-
-\textbf{Best case scenario}
 
 
-\textbf{Acceptable scenario}
 
-\newpage
-\section{Timeline}
-\begin{figure}[h!]
-\centering
-\includegraphics[height=.9\textheight,width=.6\textwidth]{Pictures/gantt}
-\caption{Timeline of the PhD project.}
-\label{fig:gantt}
-\end{figure}
-\newpage
-\section{6 Months Timeline}
-\begin{figure}[h!]
-	\centering
-	\includegraphics[height=.9\textheight,width=.6\textwidth]{Pictures/Phd06months}
-	\caption{Timeline of the PhD project.}
-	\label{fig:Phd06months}
-\end{figure}
-\newpage
 \section{Doctoral Education}
 
 \begin{table}[h!]
@@ -268,19 +266,33 @@ Constraints:
 		 - Presenting and interacting & ECPE Tutorials & (C11) information, computing \\
 		 with scientific community & and Workshops & and language\\
 		 - Supervision of MSc students & Working with partner &  (C10) Professional development  \\
-		 -Writing and publishing & organizations  &  \\
-		  research findings &  &  \\
+		 -Writing and publishing & organizations  &  (C12)  Effective presentation\\
+		  research findings &  & (C13) Cooperation/teamwork \\
 			\bottomrule % Bottom horizontal line
 		\end{tabular}
 	\end{adjustbox}
 	%	\caption{Table caption text} % Table caption, can be commented out if no caption is required
 	\label{tab:template} % A label for referencing this table elsewhere, references are used in text as \ref{label}
 \end{table}
-Transferable skills: C11.M14, C13.M6,C8.M4,C12.M4,C12.M9,C12.M11,C10.M3,C10.M4,C10.M7-last three are for last year
+%Transferable skills: C11.M14, C13.M6,C8.M4,C12.M4,C12.M9,C12.M11,C10.M3,C10.M4,C10.M7-last three are for last year
+
 \section{Supervision}
 It has been agreed that a weekly meeting will take place between the PhD student and the daily supervisor (Dr. Jelena Popovic). Additionally, a monthly meeting will take place with promotor prof.Pavol Bauer.
 
-
+\appendix
+\section*{Timelines}
+\begin{sidewaysfigure}[h!]
+	\centering
+	\includegraphics[height=.9\textheight,width=.9\textwidth]{Pictures/PhDbigplan}
+	\caption{Timeline of the PhD project.}
+	\label{fig:gantt}
+\end{sidewaysfigure}
+\begin{sidewaysfigure}[h!]
+	\centering
+	\includegraphics[height=.9\textheight,width=.9\textwidth]{Pictures/Phd06months}
+	\caption{Timeline of the PhD project.}
+	\label{fig:Phd06months}
+\end{sidewaysfigure}
 	\newpage
 	%% Bibliography
 	\bibliography{MyCollection}{}
