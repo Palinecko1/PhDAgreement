@@ -1,0 +1,289 @@
+\documentclass[]{scrreprt}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{epstopdf}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage[toc,page]{appendix}
+\usepackage{wrapfig}
+\usepackage{verbatim}
+%\usepackage{mathtools}
+\usepackage{epigraph}
+\usepackage{rotating}
+\usepackage{cite}
+\usepackage{wasysym}
+\usepackage{adjustbox}
+%
+%\usepackage[backend=bibtex]{biblatex}
+%\addbibresource{Averaging.bib}
+% \epigraphsize{\small}% Default
+%\setlength\epigraphwidth{8cm}
+%\setlength\epigraphrule{0pt}
+
+\usepackage{etoolbox}
+\usepackage{booktabs}
+%%Table
+
+%%
+\makeatletter
+\patchcmd{\epigraph}{\@epitext{#1}}{\itshape\@epitext{#1}}{}{}
+\makeatother
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newenvironment{proof}[1][Proof]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Example]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{remark}[1][Remark]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\qed}{\nobreak \ifvmode \relax \else
+	\ifdim\lastskip<1.5em \hskip-\lastskip
+	\hskip1.5em plus0em minus0.5em \fi \nobreak
+	\vrule height0.75em width0.5em depth0.25em\fi}
+
+% Title Page
+%\title{}
+%\author{}
+\newcommand*{\titleGM}{\begingroup % Create the command for including the title page in the document
+	\hbox{ % Horizontal box
+		\hspace*{0.2\textwidth} % Whitespace to the left of the title page
+		\rule{1pt}{\textheight} % Vertical line
+		\hspace*{0.05\textwidth} % Whitespace between the vertical line and title page text
+		\parbox[b]{0.75\textwidth}{ % Paragraph box which restricts text to less than the width of the page
+			
+			{\noindent\Huge\bfseries PhD Agreement \\}\\[2\baselineskip] % Title
+			{\large \textit{ Modular DC-DC Converter for future LVDC Distribution}}\\[4\baselineskip] % Tagline or further description
+		%	\vspace{0.2\textheight}
+			{\large Author: \textsc{Pavel Purgat }} \\[4\baselineskip]
+		
+		%	{\large \emph{Supervisor:} Dr. \textsc{ Jelena Popović}} \\
+		%	{\large \emph{Promotor:} prof. \textsc{Pavol Bauer}} \\
+		{ \large	\begin{tabular}{lll}
+			
+				Supervisor: & \ dr.\ ir.\ \textsc{J.}\ \textsc{Popovic} \\
+				Promotor:	& prof.\ dr.\ ir.\ \textsc{P.}\ \textsc{Bauer}
+				
+			\end{tabular} }
+			
+			\vspace{0.5\textheight} % Whitespace between the title block and the publisher
+			{\noindent  }% here should be text inside
+				\includegraphics[width=0.3\linewidth]{../Pictures/TUDlogo}%\\[\baselineskip]
+
+ % Publisher and logo 
+		
+			
+		}}
+			
+		\endgroup}
+	
+	% Sets margins and page size
+	\pagestyle{empty} % Removes page numbers
+	\makeatletter % Need for anything that contains an @ command 
+	\renewcommand{\maketitle} % Redefine maketitle to conserve space
+	{ \begingroup \vskip 10pt \begin{center} \Huge {\bf \@title}
+			\vskip 10pt \large \@author \hskip 20pt \@date \end{center}
+		\vskip 10pt \endgroup \setcounter{footnote}{0} }
+	\makeatother % End of region containing @ commands
+
+\begin{document}
+\titleGM
+
+\begin{abstract}
+	
+\end{abstract}
+        
+
+
+
+\chapter{Introduction}
+
+In past decade large penetration of power electronics into everyday life can be observed. This vast penetration lead to shift in characteristic of power distribution system from inductive and resistive towards capacitive and non-linear\cite{Boroyevich2007}. As a consequence of this vast adaptation of the power electronics, it has reached a point in its development when it is considered as a mature engineering and research field\cite{Technology2015}. As a result of this development power electronic is pushing forward new applications. A good example is reincarnation of the AC vs. DC debate\cite{IEEE2016}. 
+
+%
+It seems that in peoples consciousness the DC has lost a battle more than a century ago and passed out of all knowledge. However, the truth seems to be on the contrary, the DC has survived and dominated over AC in very specific applications such as telecommunication. From telecommunication it made its way into consumer electronics, and from consumer electronics to Microgrid research and application.  
+
+%
+With higher penetration of renewable energy sources new challenges arise for the power distribution systems. The power systems for electricity distribution were designed to for a situation with strictly defined power flow, and centralized power production. The renewable energy sources are diffuse in nature, which makes them distributed over large geographical areas. Furthermore, the renewable energy sources are also intermittent, meaning that the energy is dispersed over time periods. It has been discussed that high penetration of distributed energy sources can lead to overloading of the system. Therefore, in order to utilize more of the renewable energy sources the power distribution system needs an upgrade to become more flexible in its topology to allow for multi-directional flow of power both in space and time. 
+
+Furthermore, there is a strong trend in the world towards higher urbanization. This leads to concentration of large amounts of people in space restricted areas. Whereas, this has clear implications for social sciences, there are also implications for power distribution system. The concentration of humans in a small area leads to large concentration of energy utilization. This conditions higher power carrying capabilities of the system. High power carrying capability with high availability in AC system means serious oversizing of the network. This is in direct contradiction with  society interest, more efficient and sustainable energy usage.
+
+Therefore, the vision is to introduce a low voltage distribution network based on DC. The envisioned distribution network should not suffer from the same shortcomings as the AC based distribution. And with the newly developed DC distribution network it should be easier to incorporate all different aspects of smart grids. Furthermore, developing a complex solution for a distribution in developed world can have impact on the electrification of rural areas in the developing world. Simplified and less general solutions can be adapted in order to provide electricity for countries where population has lower buying strength.
+
+\section{Power Electronics in Low Voltage DC Distribution}
+
+The power electronics is often regarded as an enabling technology of low voltage power distribution. However, this might be slightly misleading. Because it leads to considering the low voltage DC distribution as an application pull for research. When on the contrary it seems that power electronic matured and is creating a new application. Thus pushing a new application and that is low voltage DC distribution. 
+
+Even though the power electronic seems to stand behind creation of this field, there seems to be some pulling force for improvement of the current state-of-the-art power converters. The origin of this pull force can be identified in the main trends driving introduction of more power electronic devices in the distribution grid eg. renewable resources, urbanization, better energy utilization etc. These trends projects themselves as requirements for highly flexible power distribution system with multiple applications for power converters. In order to accommodate the prospective changes over considerable time span the solution needs to be not just flexible but also scalable and standardized. These transferable features of the future distribution system provide a sufficient pull for research in power electronic field.
+
+When examining envisioned low voltage DC distribution network in particular, we can categorize the power converters into categories according to their application:
+\begin{itemize}
+	\item Renewable Energy Source integration converters
+	\item Load converters
+	\item Energy Storage converters
+	\item Distribution converters
+\end{itemize}
+
+For this project the "distribution" converter is of interest. Behind the unspecific name is a DC-DC converter which can be deployed at different parts of the network and in general should have at least these functions:
+ \begin{itemize}
+ 	\item DC voltage stepping
+ 	\item DC power or DC voltage regulation
+ 	\item DC fault isolation
+ 	\item Interfacing different DC technologies like  single bus with bipolar DC systems
+ \end{itemize}
+
+The description of the future  low voltage DC distribution network and the role of the power electronics in it, can be transformed into following converter requirements:
+
+ \begin{itemize}
+ 	\item High efficiency at partial load (very high overall efficiency)
+ 	\item Long useful life
+ 	\item N+1 redundancy
+ 	\item Easy maintenance
+ 	\item Minimal Cost
+ 	\item Environment friendly 
+ \end{itemize}
+
+
+
+The most natural way for solving a problem is to decompose it into smaller sub-parts, solve each sub-part individually and afterwards connect the pieces. %This approach is also reflected in Adam Smith's "laissez faire" concept. Where via labour division much higher productivity is achieved. 
+This approach is adopted in many research fields and can have different names. In power electronic this approach is referred to as modular topology,design or manufacturing. While modularity is widely studied in frame of product architecture, in power electronic field this term is used rather vaguely. Which can lead to considerable confusion.
+
+The modular product architecture can be very beneficial if we either want to produce large variety of product at low-cost and/or there is need for independent design of a module from its function. Modular approach allows the producer to not only change product at one specific point in time, but also over a large time span. The product architecture  has far reaching implications  for maintenance and upgrades of the product. The modular product architecture encourages economy of scale based on standardization, increase in flexibility, outsourcing and many other benefits.
+
+
+The modularity is not a new concept in power electronics. On the contrary there seems to be a maze of the research work, which makes it hard to rigorously study the impact of modularity on the improvement of power converters. Furthermore, the modular approach was never widely adapted by the industry which leads to lack of real-world data and experience. (?)
+
+
+\section{Conclusion}
+
+In the above text a new approach towards power distribution was briefly described. The role of power electronic devices was emphasized through out the text. As was described the modular concept can potentially hold many advantages. In spite of that, this concept was not as of now picked up by the industry in any significant way. Therefore following conclusions are drawn, which are implications for the aim and objectives of this project:
+\begin{itemize}
+	\item low voltage DC distribution is a plausible solution for the problems arising with increased integration of renewable energy sources
+	\item low voltage DC distribution is used as a system of choice for very specific problems, which implies that the converters should be versatile in functionality and power level in order to create price competitive solution
+	\item modular architecture and production of power converters can provide necessary framework for the successful adaptation of the low voltage DC  distribution
+	\item modularity as a concept was rampantly adopted by the researchers in power electronics, however not by industry (?)
+\end{itemize}
+
+\chapter{Aim and Research Objectives}
+
+\textbf{Aim:} Develop modular DC-DC converter for low voltage DC distribution network.
+ 
+ \vspace{10mm}
+
+\textbf{Research Objectives}
+
+\begin{enumerate}
+	\item Analyse present definition and concepts of modularity used in power electronic design and manufacturing. The concepts of modularity are to be analysed and categorized. Furthermore, the concepts of modularity are to be enriched by modularity in manufacturing. Creating a basis for truly modular converter beyond the cascaded converter. 
+	\item Introduce new definition of modularity for power converters such that both design and manufacturing process will be covered. The concept of modularity must take into account the specifics of the power electronic field, and thus should be general enough to cover the space of power electronics in all three dimensions:
+	\subitem Power 
+	\subitem Functions
+	\subitem Application
+	\item The concept of modularity is then to be applied on the three cornerstones of DC-DC converter design - thermal management, high power density, efficiency. And also on the three cornerstones of converter manufacturing - spatial design, electromagnetic design, thermal design. Connecting the two process in one which accentuates the benefits of modular approach.
+	\item Based on the concept of modularity develop an approach for product planning, which will dramatically reduce time to market. 
+\end{enumerate}
+
+\newpage
+\section{Assumptions and Constraints}
+
+Assumptions on the system level:
+\begin{itemize}
+	\item LVDC network connecting multiple houses, with unspecific architecture 
+	\item nominal voltage level is assumed to be 350 V
+	\item other voltage levels include 48 V, 700 V, 1400 V
+	\item network is at least as efficient as AC (?)
+	\item large penetration of res
+\end{itemize}
+
+Constraints:
+\begin{itemize}
+	\item limited input from industry fellows (?)
+	\item application is restricted to LV DC distribution network
+\end{itemize}
+
+
+
+
+
+
+\chapter{Strategy and planning}
+
+\section{4 years planning}
+
+\textbf{Best case scenario}
+
+
+\textbf{Acceptable scenario}
+
+\section{6 months}
+
+\textbf{Best case scenario}
+
+
+\textbf{Acceptable scenario}
+
+\newpage
+\section{Timeline}
+\begin{figure}[h!]
+\centering
+\includegraphics[height=.9\textheight,width=.6\textwidth]{Pictures/gantt}
+\caption{Timeline of the PhD project.}
+\label{fig:gantt}
+\end{figure}
+\newpage
+\section{6 Months Timeline}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[height=.9\textheight,width=.6\textwidth]{Pictures/Phd06months}
+	\caption{Timeline of the PhD project.}
+	\label{fig:Phd06months}
+\end{figure}
+\newpage
+\section{Doctoral Education}
+
+\begin{table}[h!]
+	\centering 
+	\begin{adjustbox}{width=1\textwidth}
+		\small
+		\begin{tabular}{c c c} 
+			\multicolumn{3}{c}{Doctoral Education Areas} \\ 
+			\cmidrule(l){1-3}
+		%	\multicolumn{2}{c}{Half-bridge } & \multicolumn{2}{c}{Full-bridge } \\
+			Research competences and  & Discipline related skills & Transferable competences and    \\ % Column
+			skills & (15 GSC) & skills \\
+			(15 GSC) &        & (15 GSC) \\
+			\midrule % In-table horizontal line
+			\midrule
+		 Performing and learning  & Summer School(5 GCS) & Attending GS courses like: \\
+		 through on the job activities like: & PhD research School (3 GSC) & (C9.M1)PhD Startup \\
+		 - Presenting and interacting & ECPE Tutorials & (C11) information, computing \\
+		 with scientific community & and Workshops & and language\\
+		 - Supervision of MSc students & Working with partner &  (C10) Professional development  \\
+		 -Writing and publishing & organizations  &  \\
+		  research findings &  &  \\
+			\bottomrule % Bottom horizontal line
+		\end{tabular}
+	\end{adjustbox}
+	%	\caption{Table caption text} % Table caption, can be commented out if no caption is required
+	\label{tab:template} % A label for referencing this table elsewhere, references are used in text as \ref{label}
+\end{table}
+Transferable skills: C11.M14, C13.M6,C8.M4,C12.M4,C12.M9,C12.M11,C10.M3,C10.M4,C10.M7-last three are for last year
+\section{Supervision}
+It has been agreed that a weekly meeting will take place between the PhD student and the daily supervisor (Dr. Jelena Popovic). Additionally, a monthly meeting will take place with promotor prof.Pavol Bauer.
+
+
+	\newpage
+	%% Bibliography
+	\bibliography{MyCollection}{}
+	\bibliographystyle{plain}
+	
+\end{document}  
